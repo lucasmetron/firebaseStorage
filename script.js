@@ -12,17 +12,26 @@ firebase.initializeApp(firebaseConfig);
 
 const storage = firebase.storage();
 
-const ref1 = storage.ref("/material");
-const ref2 = storage.ref("/material/Lista-2.pdf")
+const ref = storage.ref("/material");
 
-ref2.getDownloadURL().then(url => {
-    console.log(url)
-})
-
-ref1.listAll().then(res => {
+ref.root.listAll().then(res => {
     console.log(res.items)
-    res.items[0].getDownloadURL().then(url => {
-        console.log(url)
-    })
 })
+
+
+
+
+
+
+
+
+// const fileRef = ref.child("Lucas_Rosa.pdf")
+// const fileParent = fileRef.parent.parent;
+
+// fileParent.listAll().then(res => {
+//     console.log(res)
+// })
+
+
+
 
