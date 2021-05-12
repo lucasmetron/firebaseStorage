@@ -9,28 +9,25 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 const storage = firebase.storage();
 
 const ref = storage.ref("/material");
 
-ref.root.listAll().then(res => {
-    console.log(res.items)
+let fileInput = document.querySelector("#fileInput");
+console.log(fileInput);
+
+fileInput.addEventListener("change", (e) => {
+
+    const file = e.target.files[0];
+    console.log(file)
+    ref.child(file.name).put(file).then(snapshot => {
+        console.log(snapshot.state);
+    })
 })
 
 
 
 
-
-
-
-
-// const fileRef = ref.child("Lucas_Rosa.pdf")
-// const fileParent = fileRef.parent.parent;
-
-// fileParent.listAll().then(res => {
-//     console.log(res)
-// })
 
 
 
