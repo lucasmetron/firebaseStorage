@@ -12,4 +12,17 @@ firebase.initializeApp(firebaseConfig);
 
 const storage = firebase.storage();
 
-const ref = storage.ref();
+const ref1 = storage.ref("/material");
+const ref2 = storage.ref("/material/Lista-2.pdf")
+
+ref2.getDownloadURL().then(url => {
+    console.log(url)
+})
+
+ref1.listAll().then(res => {
+    console.log(res.items)
+    res.items[0].getDownloadURL().then(url => {
+        console.log(url)
+    })
+})
+
